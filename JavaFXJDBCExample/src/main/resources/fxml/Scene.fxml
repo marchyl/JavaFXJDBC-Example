@@ -48,7 +48,7 @@
             </AnchorPane>
          </left>
          <bottom>
-            <TextArea fx:id="sqlQuery" prefHeight="80.0" prefWidth="520.0" BorderPane.alignment="CENTER" />
+            <TextArea fx:id="sqlQuery" prefHeight="114.0" prefWidth="520.0" promptText="Enter query." wrapText="true" BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
     </children>

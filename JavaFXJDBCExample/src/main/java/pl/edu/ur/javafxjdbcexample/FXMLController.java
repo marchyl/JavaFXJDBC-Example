@@ -14,10 +14,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -27,8 +24,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.util.Callback;
 import pl.edu.ur.javafxjdbcexample.database.DatabaseHelper;
 
@@ -76,7 +71,6 @@ public class FXMLController implements Initializable {
     void executeQuery(ActionEvent event) throws SQLException, IOException {
         
         cleanTable(tableView);
-        
         Connection conn = dbHelper.getConnection();
         
         if (sqlQuery.getText().isEmpty()) {
@@ -85,7 +79,6 @@ public class FXMLController implements Initializable {
             alert.setTitle("Alert Dialog");
             alert.setHeaderText("Error!");
             alert.setContentText("Empty query detected!");
-            
             alert.showAndWait();
         } else {
             try {
@@ -94,7 +87,6 @@ public class FXMLController implements Initializable {
             } catch (SQLException sqlEx) {
                 showExceptionDialog(sqlEx);
             }
-            
         }
         conn.close();
     }
@@ -128,12 +120,10 @@ public class FXMLController implements Initializable {
             for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
                 //Iterate Column
                 row.add(String.valueOf(rs.getObject(i)));
-                
             }
             
             System.out.println("Row [1] added " + row.toString());
-            data.add(row);
-            
+            data.add(row);  
         }
 
         //FINALLY ADDED TO TableView
